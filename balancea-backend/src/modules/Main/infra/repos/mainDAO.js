@@ -2,15 +2,15 @@
 const { Client } = require("pg")
 
 //Conexion
-const connection = require("../../../../common/config/confPG_connection")
+const connection = require("../../../../common/config/config_connectionPG")
 
-class userDAO {
+class mainDAO {
     async setUser(data) {
         try {
             const client = new Client(connection)
             await client.connect()
 
-            const query = `INSERT INTO public."tbl_Users"(
+            const query = `INSERT INTO public."usuarios"(
                 "strName",
                 "strLastName",
                 "strEmail",
@@ -42,7 +42,7 @@ class userDAO {
                 error: true,
                 msg:
                     error.message ||
-                    "Error en el metodo setPerson de la clase daoPersons",
+                    "Error en el metodo setUser de la clase mainDAO",
             };
 
             return result;
@@ -56,7 +56,7 @@ class userDAO {
 
             const query = `
                 SELECT *
-                FROM public."tbl_Users"
+                FROM public."usuarios"
                 WHERE ("strUsername" = $1)
             `
 
@@ -78,28 +78,12 @@ class userDAO {
                 error: true,
                 msg:
                     error.message ||
-                    "Error en el metodo validateUser de la clase daoAuth",
+                    "Error en el metodo validateUser de la clase mainDAO",
             };
 
             return result;
         }
     }
-
-    async getUser(data) {
-        const client = new Client(connection)
-        await client.connect()
-        let response = await client.query("SELECT NOW() as now")
-
-        await client.end()
-
-        let result = {
-            error: false,
-            data: response.rows[0]
-        }
-
-        return result
-    }
-
 }
 
-module.exports = userDAO
+module.exports = mainDAO

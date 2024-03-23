@@ -19,7 +19,7 @@ app.use(helmet());
 app.use(compression({ level: 9 }));
 
 //Router
-//app.use(require("../infra/http/apiMain.routes"));
+app.use(require("../infra/http/mainRoutes.routes"));
 
 //Static
 app.use(express.static("public"));

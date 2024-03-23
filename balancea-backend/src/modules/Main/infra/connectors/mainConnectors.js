@@ -1,6 +1,6 @@
-const classDao = require("../repos/userDAO")
+const classDao = require("../repos/mainDAO")
 
-class userConnectors{
+class mainConnectors{
     async setUser(data){
         const dao = new classDao()
         const res = await dao.setUser(data)
@@ -12,12 +12,6 @@ class userConnectors{
         const res = await dao.validateUser(data)
         return res
     }
-    
-    async getUser(data){
-        const dao = new classDao()
-        const res = await dao.getUser(data)
-        return res
-    }
 }
 
-module.exports = userConnectors
+module.exports = mainConnectors
