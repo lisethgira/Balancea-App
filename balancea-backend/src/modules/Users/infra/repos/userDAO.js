@@ -2,7 +2,7 @@
 const { Client } = require("pg")
 
 //Conexion
-const connection = require("../../../../common/config/confPG_connection")
+const connection = require("../../../../common/config/config_connectionPG")
 
 class userDAO {
     async setUser(data) {
@@ -11,26 +11,26 @@ class userDAO {
             await client.connect()
 
             const query = `INSERT INTO public."tbl_Users"(
+                "strUser",
+                "strPass",
                 "strName",
                 "strLastName",
-                "strEmail",
-                "strUsername",
-                "strPassword"
+                "strEmail"
                 ) VALUES ($1, $2, $3, $4, $5) RETURNING *`
 
             const values = [
+                data.strUser,
+                data.strPass,
                 data.strName,
                 data.strLastName,
                 data.strEmail,
-                data.strUsername,
-                data.strPassword,
             ]
-            
-            let response = await client.query(query, values)
+
+            const response = await client.query(query, values)
 
             await client.end()
 
-            let result = {
+            const result = {
                 error: false,
                 msg: "El usuario se registro correctamente.",
                 data: response.rows[0]
@@ -38,7 +38,7 @@ class userDAO {
 
             return result
         } catch (error) {
-            let result = {
+            const result = {
                 error: true,
                 msg:
                     error.message ||
@@ -57,16 +57,16 @@ class userDAO {
             const query = `
                 SELECT *
                 FROM public."tbl_Users"
-                WHERE ("strUsername" = $1)
+                WHERE ("strUser" = $1)
             `
 
-            const values = [data.strUsername]
+            const values = [data.strUser]
 
-            let response = await client.query(query,values)
+            const response = await client.query(query, values)
 
             await client.end()
 
-            let result = {
+            const result = {
                 error: false,
                 msg: "el usuario se ha logueado correctamente.",
                 data: response.rows[0],
@@ -74,7 +74,7 @@ class userDAO {
 
             return result
         } catch (error) {
-            let result = {
+            const result = {
                 error: true,
                 msg:
                     error.message ||
@@ -86,18 +86,42 @@ class userDAO {
     }
 
     async getUser(data) {
-        const client = new Client(connection)
-        await client.connect()
-        let response = await client.query("SELECT NOW() as now")
+        try {
+            const client = new Client(connection)
+            await client.connect()
 
-        await client.end()
+            const query = `
+                SELECT *
+                FROM public."tbl_Users"
+                WHERE ("strUser" = $1 OR "strEmail" = $2)
+            `
 
-        let result = {
-            error: false,
-            data: response.rows[0]
+            const values = [
+                data.strUser,
+                data.strEmail
+            ]
+
+            const response = await client.query(query, values)
+
+            await client.end()
+
+            const result = {
+                error: false,
+                msg: "el usuario se ha logueado correctamente.",
+                data: response.rows[0],
+            }
+
+            return result
+        } catch (error) {
+            const result = {
+                error: true,
+                msg:
+                    error.message ||
+                    "Error en el metodo validateUser de la clase daoAuth",
+            };
+
+            return result;
         }
-
-        return result
     }
 
 }

@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken")
 //Interface
 const classInterfaceDAOMain = require("../infra/connectors/mainConnectors")
 
+//service
+const serviceGetUser = require("../../Users/domain/getUser.service")
+
 //Functions
 const { compare } = require("../app/functions/handleBcrypt")
 
@@ -27,17 +30,11 @@ class Login {
 
     //Validaciones del microservicio
     async #validations(){
-        const dao = new classInterfaceDAOMain()
-
-        if (!this.#objData?.strUsername && !this.#objData?.strPassword){
+        if (!this.#objData?.strUser && !this.#objData?.strPass){
             throw new Error("Faltan campos requeridos.");
         }
 
-        if (!validator.isEmail(this.#objData?.strUsername)) {
-            throw new Error("El campo de Usuario contiene un formato no valido debe ser tipo email.");
-        }
-
-        const queryGetUser = await dao.validateUser({strUsername:this.#objData.strUsername});
+        const queryGetUser = await serviceGetUser({strUser:this.#objData.strUser});
 
         if (queryGetUser.error) {
             throw new Error(queryGetUser.msg)
@@ -46,18 +43,12 @@ class Login {
         if (!queryGetUser.data) {
             throw new Error("El usuario ingresado no exite.");
         }
+
+        this.#objDataUser = queryGetUser.data
     }
 
     async #validateData(){
-        const dao = new classInterfaceDAOMain()
-        const query = await dao.validateUser(this.#objData)
-
-        if (query.error) {
-            throw new Error(query.msg)
-        }
-
-        const objDataUser = query.data
-        const checkPassword = await compare(this.#objData.strPassword, objDataUser.strPassword)
+        const checkPassword = await compare(this.#objData.strPass, this.#objDataUser.strPass)
 
         if (!checkPassword) {
             throw new Error("Contraseña incorrecta")
@@ -72,8 +63,8 @@ class Login {
         {expiresIn:process.env.TOKEN_EXPIRATION,algorithm: "HS256"})
         
         this.#objResult={
-            error: query.error,
-            msg: query.msg,
+            error: false,
+            msg: "El usuario se logueo correctamente.",
             data: token,
         }
 
