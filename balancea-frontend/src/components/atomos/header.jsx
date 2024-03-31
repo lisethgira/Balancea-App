@@ -97,7 +97,9 @@ const Header = () => {
 								<Link to={`#`}>Career</Link>
 							</Li>
 						</Ul>
-						<Button>Request Invite</Button>
+						<Link to="/login">
+								<Button>Request Invite</Button>
+						</Link>
 						<img
 							src={open ? close : hamburger}
 							className='hamburger'

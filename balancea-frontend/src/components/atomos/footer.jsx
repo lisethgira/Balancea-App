@@ -86,7 +86,9 @@ const Footer = () => {
 							</div>
 						</FooterLinks>
 						<FooterButton>
-							<Button>Request Invite</Button>
+							<Link to="/login">
+								<Button>Request Invite</Button>
+							</Link>
 						</FooterButton>{' '}
 					</div>
 				</Container>

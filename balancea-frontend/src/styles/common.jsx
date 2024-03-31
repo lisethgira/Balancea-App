@@ -10,6 +10,7 @@ export const Button = styled.button`
 	);
 	border: none;
 	outline: none;
+	cursor: pointer;
 	color: var(--White);
 `;
 export const Container = styled.div`

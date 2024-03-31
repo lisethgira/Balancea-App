@@ -1,5 +1,6 @@
 import { Button, NoRightPaddingContainer } from '../../styles/common';
 import { H1, Para } from '../../styles/typography';
+import { Link } from 'react-router-dom';
 
 import HeroImg from '../../assets/Landing/image-mockups.png';
 import HeroBg from '../../assets/Landing/bg-intro-desktop.svg';
@@ -97,7 +98,9 @@ const Hero = () => {
 								one-stop-shop for spending, saving, budgeting, investing, and
 								much more.
 							</Para>
-							<Button>Request Invite</Button>
+							<Link to="/login">
+								<Button>Request Invite</Button>
+							</Link>
 						</HeroContentWrapper>
 					</HeroContent>
 					<HeroImage>

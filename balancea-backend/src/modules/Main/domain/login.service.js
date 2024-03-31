@@ -57,7 +57,8 @@ class Login {
         const secretKey = process.env.KEY_TOKEN
 
         const token = jwt.sign({
-            ...this.#objDataUser
+            ...this.#objDataUser,
+            strPass:null,
         },
         secretKey,
         {expiresIn:process.env.TOKEN_EXPIRATION,algorithm: "HS256"})
