@@ -5,8 +5,8 @@ export const Button = styled.button`
 	border-radius: 3rem;
 	background: linear-gradient(
 		45deg,
-		var(--LimeGreen) 0%,
-		var(--BrightCyan) 100%
+		var(--Purple) 0%,
+		var(--Blue) 100%
 	);
 	border: none;
 	outline: none;
