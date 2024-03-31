@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import logo from '../../assets/Landing/logo.svg';
+import  logo  from "../../assets/logoSinBg.png";
 import { Link } from 'react-router-dom';
 import { Button, Container } from '../../styles/common';
 import hamburger from '../../assets/Landing/icon-hamburger.svg';
@@ -59,7 +59,12 @@ export const Ul = styled.ul`
 export const Li = styled.li`
 	padding: 1rem 0;
 `;
-export const Logo = styled.div``;
+const Logo = styled.div`
+    img {
+        width:40px;
+        height: 30px;
+    }
+`;
 
 const Header = () => {
 	const [open, setOpen] = useState(false);
@@ -72,7 +77,7 @@ const Header = () => {
 			<Container>
 				<Navigation>
 					<Nav>
-						<Logo>
+						<Logo >
 							<img src={logo} alt='logo' />
 						</Logo>
 						<Ul className={open ? `active` : `navlinks`}>
