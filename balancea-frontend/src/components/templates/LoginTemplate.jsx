@@ -1,7 +1,15 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
+
 import BtnSave from "../moleculas/BtnSave";
 import Logo from "../../assets/logo2SinBg.png";
 import v from "../../styles/variables";
+import Tab, { TabItem } from "../organismos/tabLogin";
+import FormLogin from "../moleculas/formLogin";
+import FormRegister from "../moleculas/formRegister";
+import FormRecoveryPsw from "../moleculas/formRecoveryPsw";
 
 //Styles
 const Container = styled.div`
@@ -19,12 +27,15 @@ const Container = styled.div`
     border-radius: 20px;
     gap: 50px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 20px;
     padding: 20px;
     box-shadow: 8px 5px 18px 3px rgba(0, 0, 0, 0.35);
     .version {
       color: #727272;
+      text-align: start;
+    }
+    .Link {
       text-align: start;
     }
     .frase {
@@ -33,8 +44,23 @@ const Container = styled.div`
       margin-bottom: 20px;
       margin-top: 20px;
     }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+      height: auto;
+      background-color: #131313;
+    }
   }
 `;
+
+const Column = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const ContainerBtn = styled.div`
   margin-bottom: 20px;
   margin-top: 20px;
@@ -60,17 +86,53 @@ const ImageContainer = styled.div`
   }
 `;
 
+const ContainerForm = styled.div`
+  margin-top: 20px;
+`;
+
 //component
 export default function LoginTemplate() {
+  // Estado para manejar el formulario activo
+  const [activeForm, setActiveForm] = useState();
+
+  const onTabSelected = (tabName) => {
+    setActiveForm(tabName);
+  };
+
+  // Función para renderizar el formulario activo
+  const renderActiveForm = () => {
+    switch (activeForm) {
+      case 0:
+        return <FormRegister />;
+      case 1:
+        return <FormLogin />;
+      case 2:
+        return <FormRecoveryPsw />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Container imgfondo={v.imagenfondo}>
       <div className="contentCard">
-        <span className="version">Versión 1.0</span>
-        <div>
+        <Column>
+          <span className="version">Versión 1.0</span>
           <ImageContainer>
             <img src={Logo} alt="Descripción" />
           </ImageContainer>
           <p className="frase">Toma el control de tus 💵gastos e 💰ingresos.</p>
+          <Link to="/" className="backLink">
+            Regresar al Inicio
+          </Link>
+        </Column>
+        <Column>
+          <Tab onTabSelected={onTabSelected}>
+            <TabItem>Sing up</TabItem>
+            <TabItem>Login</TabItem>
+            <TabItem>Recover</TabItem>
+          </Tab>
+          <ContainerForm>{renderActiveForm()}</ContainerForm>
           <ContainerBtn>
             <BtnSave
               titulo="Iniciar con Google"
@@ -79,7 +141,7 @@ export default function LoginTemplate() {
               bgcolor={v.colorSecundario}
             />
           </ContainerBtn>
-        </div>
+        </Column>
       </div>
     </Container>
   );
