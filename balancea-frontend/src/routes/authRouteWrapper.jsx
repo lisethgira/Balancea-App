@@ -12,6 +12,8 @@ import Device from "../styles/breakpoints"
 const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr;
+    background: ${({theme}) => theme.bgtotal};
+    transition: 0.3s ease-in-out;
     .contentSidebar{
       display: none;
     }
@@ -20,9 +22,11 @@ const Container = styled.div`
       position: absolute;
       left: 20px;
     }
-    background: ${({theme}) => theme.bgtotal};
   @media ${Device.tablet}{
     grid-template-columns: 65px 1fr;
+    &.active{
+      grid-template-columns: 220px 1fr;
+}
     .contentSidebar{
       display: initial;
     }
@@ -43,7 +47,7 @@ width: 100%;
 //===============================================================================================================================================
 const HomeUser = lazy(() => import("../pages/HomeUser"));
 const Sidebar = lazy(() => import("../components/organismos/sidebar/sidebar"));
-const MenuHamburguer = lazy(() => import("../components/organismos/sidebar/menuHamburguer"));
+const MenuHamburguer = lazy(() => import("../components/organismos/menuHamburguer"));
 
 const AuthRouteWrapper = () => {
   //  const {user} = UserAuth();
@@ -51,9 +55,9 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     // <AuthContextProvider>
-      <Container>
+      <Container className={sidebarOpen ? "active" : " " }>
         <div className="contentSidebar">
-        <Sidebar state={sidebarOpen} setState={setSidebarOpen} />
+        <Sidebar state={sidebarOpen} setState={setSidebarOpen}  />
         </div>
         <div className="contentMenuHamburguer">
         <MenuHamburguer />

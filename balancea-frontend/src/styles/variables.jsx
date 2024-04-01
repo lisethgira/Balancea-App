@@ -24,6 +24,7 @@ import { BsBarChartLine } from "react-icons/bs";
 import { AiOutlineCalculator } from "react-icons/ai";
 import { BsCalendarCheck } from "react-icons/bs";
 import fondo from "../assets/fondo2.svg";
+import { GoChevronLeft } from "react-icons/go";
 
 
 const v = {
@@ -82,6 +83,7 @@ const v = {
   iconocheck: BsCalendarCheck,
   imagenfondo: fondo,
   colorSecundario: `#cfe0f6`,
+  iconoflechaderecha: GoChevronLeft
 };
 
 export default v;  

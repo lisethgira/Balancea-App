@@ -13,7 +13,7 @@ export default function HomeUser() {
     {/* <h1>Bienvenido Home {user.full_name}</h1>
       <img src={user.picture}/>
       <button onClick={signout}>Cerrar</button> */}
-      <h1>home</h1>
+      <h1> este el home del home de la app</h1>
     </Container>
   );
 }
