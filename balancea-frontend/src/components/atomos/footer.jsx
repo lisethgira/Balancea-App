@@ -43,7 +43,13 @@ export const FooterLinks = styled.div`
     display: flex;
     flex-direction: column;
     a {
+	  margin-top: 15px;
       margin-bottom: 1rem;
+	  @media (max-width: 480px) {
+		margin-bottom: 1rem;
+		margin-top: 0%;
+    }
+
     }
   }
   @media (max-width: 480px) {
