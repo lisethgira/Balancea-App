@@ -2,15 +2,16 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import GlobalStyle from '../styles/globalStyle';
 
+
 import styled from "styled-components";
 //===============================================================================================================================================
 //========================================== Rutas principales  =================================================================================
 //===============================================================================================================================================
 const Header = lazy(() => import("../components/atomos/header"));
+const Footer = lazy(() => import("../components/atomos/footer"));
 const Home = lazy(() => import("../pages/Home"));
 const Login = lazy(() => import("../pages/Login"));
-const HomeUser = lazy(() => import("../pages/HomeUser"));
-const Footer = lazy(() => import("../components/atomos/footer"));
+const AuthRouteWrapper = lazy(() => import("./authRouteWrapper"));
 
 const Content = styled.div`
     display: flex;
@@ -34,7 +35,7 @@ export function MyRoutes() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/homeuser" element={<HomeUser />} />
+        <Route path="*" element={<AuthRouteWrapper />} />
       </Routes>
     </Suspense>
     </>
