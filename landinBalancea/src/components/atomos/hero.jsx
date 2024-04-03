@@ -97,7 +97,7 @@ const Hero = () => {
                 one-stop-shop for spending, saving, budgeting, investing, and
                 much more.
               </Para>
-              <Link to="/login">
+              <Link to="https://balancea-app-4j4a.vercel.app/">
                 <Button>Iniciar Sesión</Button>
               </Link>
             </HeroContentWrapper>

@@ -104,7 +104,7 @@ const Header = () => {
                 <Link to={`#`}>Career</Link>
               </Li>
             </Ul>
-            <Link to="/login">
+            <Link to="https://balancea-app-4j4a.vercel.app/">
               <Button>Iniciar Sesión</Button>
             </Link>
             <img

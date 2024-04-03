@@ -93,7 +93,7 @@ const Footer = () => {
               </div>
             </FooterLinks>
             <FooterButton>
-              <Link to="/login">
+              <Link to="https://balancea-app-4j4a.vercel.app/">
                 <Button>Iniciar Sesión</Button>
               </Link>
             </FooterButton>{" "}
