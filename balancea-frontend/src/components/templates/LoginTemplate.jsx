@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import styled from "styled-components";
-
-import BtnSave from "../moleculas/BtnSave";
+import {
+  Btnsave,
+  v,
+  useAuthStore,
+  FormLogin,
+  FormRecoveryPsw,
+  FormRegister,
+  TabLogin,
+  TabItem
+} from "../../index";
 import Logo from "../../assets/logo2SinBg.png";
-import v from "../../styles/variables";
-import Tab, { TabItem } from "../organismos/tabLogin";
-import FormLogin from "../moleculas/formLogin";
-import FormRegister from "../moleculas/formRegister";
-import FormRecoveryPsw from "../moleculas/formRecoveryPsw";
 
 //Styles
 const Container = styled.div`
@@ -90,8 +92,9 @@ const ContainerForm = styled.div`
   margin-top: 20px;
 `;
 
-//component
-export default function LoginTemplate() {
+//componentexport default function LoginTemplate() {
+  export const LoginTemplate = () => {
+  const { signInWithGoogle } = useAuthStore();
   // Estado para manejar el formulario activo
   const [activeForm, setActiveForm] = useState();
 
@@ -127,18 +130,18 @@ export default function LoginTemplate() {
           </Link>
         </Column>
         <Column>
-          <Tab onTabSelected={onTabSelected}>
+          <TabLogin onTabSelected={onTabSelected}>
             <TabItem>Sing up</TabItem>
             <TabItem>Login</TabItem>
             <TabItem>Recover</TabItem>
-          </Tab>
+          </TabLogin>
           <ContainerForm>{renderActiveForm()}</ContainerForm>
           <ContainerBtn>
-            <BtnSave
+            <Btnsave
               titulo="Iniciar con Google"
-              funcion={() => console.log(v)}
               icono={<v.iconogoogle />}
               bgcolor={v.colorSecundario}
+              funcion={signInWithGoogle}
             />
           </ContainerBtn>
         </Column>

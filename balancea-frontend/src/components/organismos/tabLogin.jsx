@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useEffect, useState, memo } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export const TabContainer = styled.div`
   display: flex;
@@ -17,27 +17,21 @@ export const TabItem = styled.div`
   padding: 10px;
   cursor: pointer;
   transition: 0.3s;
-  border-bottom: 4px solid ${(props) => (
-    props.selected ? selectedColor : defaultColor
-  )};
+  border-bottom: 4px solid
+    ${(props) => (props.selected ? selectedColor : defaultColor)};
 `;
 
-const Tab = ({ children, onTabSelected }) => {
+export const TabLogin = ({ children, onTabSelected }) => {
   const [itemId, setItemId] = useState(1);
-
-  Tab.propTypes = {
-    children: PropTypes.node.isRequired,
-    onTabSelected: PropTypes.func
-  };
-
-  MemoTabItem.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
-  
 
   useEffect(() => {
     onTabSelected && onTabSelected(itemId);
   }, [itemId, onTabSelected]);
+
+  TabLogin.propTypes = {
+    children: PropTypes.node.isRequired,
+    onTabSelected: PropTypes.func,
+  };
 
   return (
     <TabContainer>
@@ -46,7 +40,7 @@ const Tab = ({ children, onTabSelected }) => {
           onClick: () => {
             setItemId(index);
           },
-          selected: itemId === index
+          selected: itemId === index,
         });
       })}
     </TabContainer>
@@ -57,7 +51,9 @@ export const MemoTabItem = memo(({ children, ...restProps }) => (
   <TabItem {...restProps}>{children}</TabItem>
 ));
 
-MemoTabItem.displayName = "MemoTabItem";
+MemoTabItem.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
-export default Tab;
+MemoTabItem.displayName = "MemoTabItem";
 

@@ -1,5 +1,6 @@
 export const Light ={
-    body: "#fff",
+     rgbafondoanimado:"rgba(102, 102, 102, 0.2)",
+    body: "#fff",  
     text: "#202020",
     bodyRgba: "255, 255, 255",
     textRgba: "32,32,32",
@@ -16,14 +17,14 @@ export const Light ={
     navHeight: "5rem",
     whiteBg:"#DAC1FF",
     bg: "rgb(255,255,255)",
-    bgAlpha: "rgba(128,128,128,.3)",
+    bgAlpha: "#f2f2f2",
     bg2: "rgb(245,245,245)",
     bg3: "#fff",
-    primary: "#3615ca",
+    primary: "rgb(52, 131, 235)",
     bg4:"#eaeaea",
     bg5:"#9046FF",
     bgtotal:"#EDF3FB",
-    bgtgderecha:"#9FA2A2",
+    bgtgderecha:"#eeeeee",
     colorToggle:"#F9743B",
     translateToggle:"-12px",
    
@@ -35,6 +36,7 @@ export const Light ={
 
 }
 export const Dark = {
+    rgbafondoanimado:"rgba(198, 198, 198, 0.2)",
     bgtgderecha:"#21252B",
     body: "#202020",
     text: "#fff",
@@ -56,11 +58,11 @@ export const Dark = {
     bgAlpha: "rgba(0,0,0,.3)",
     bg2: "rgb(30,30,30)",
     bg3: "#2C2C2E",
-    primary: "#3615ca",
+    primary: "rgb(52, 131, 235)",
     bg4:"#4E4E50",
     bg5:"#BF94FF",
     bgtotal:"#1C1C1E",
-    colorToggle:"#3615ca",
+    colorToggle:"rgb(52, 131, 235)",
     translateToggle:"26px",
    
     logorotate:"-360deg",
@@ -69,6 +71,3 @@ export const Dark = {
     colorSubtitle:"#b7b7b7",
     colorScroll:"#434343"
   };
-
-
-  
