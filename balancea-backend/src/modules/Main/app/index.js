@@ -20,6 +20,8 @@ app.use(compression({ level: 9 }));
 
 //Router
 app.use(require("../infra/http/mainRoutes.routes"));
+app.use("/balancea/api",require("../../Categories/infra/http/categorie.routes"))
+app.use("/balancea/api",require("../../Transactions/infra/http/transaction.routes"))
 
 //Static
 app.use(express.static("public"));
