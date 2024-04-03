@@ -3,7 +3,7 @@ import { H1, Para } from "../../styles/typography";
 import { Link } from "react-router-dom";
 
 import HeroImg from "../../assets/Landing/image-mockups.png";
-import HeroBg from "../../assets/Landing/bg-intro-desktop.svg";
+import HeroBg from "../../assets/Landing/bg-intro-desktop.png";
 import styled from "styled-components";
 
 export const HeroWrapper = styled.div`
