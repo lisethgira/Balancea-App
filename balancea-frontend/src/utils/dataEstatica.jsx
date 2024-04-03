@@ -5,8 +5,8 @@ import {
   AiOutlineSetting,
 } from "react-icons/ai";
 import { MdOutlineAnalytics } from "react-icons/md";
-import {RiDashboard3Line} from "react-icons/ri"
-import {TbPig} from "react-icons/tb"
+// import {RiDashboard3Line} from "react-icons/ri"
+// import {TbPig} from "react-icons/tb"
 
 export const DesplegableUser = [
   {
@@ -89,11 +89,11 @@ export const SecondarylinksArray = [
     icon: <AiOutlineSetting />,
     to: "/configurar",
   },
-  {
-    label: "Acerca de",
-    icon: <TbPig />,
-    to: "/acercade",
-  },
+  // {
+  //   label: "Acerca de",
+  //   icon: <TbPig />,
+  //   to: "/acercade",
+  // },
 ];
 //temas
 export const TemasData = [
