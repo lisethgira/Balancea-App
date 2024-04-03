@@ -9,7 +9,7 @@ export function SidebarCard() {
         <div className="circle2"></div>
         <h3>Centro de ayuda</h3>
         <div className="contentBtn">
-          <Btnsave titulo="Contactar" bgcolor="#f8f2fd" url="https://t.me/htmlycss369"/>
+          <Btnsave titulo="Contactar" bgcolor="#f8f2fd" url="https://api.whatsapp.com/send?phone=+573196178645&text=Tengo+Dudas+sobre+mi+aplicaci%C3%B3n"/>
         </div>
       </div>
     </Container>

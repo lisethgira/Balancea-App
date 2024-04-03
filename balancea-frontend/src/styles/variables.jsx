@@ -2,14 +2,16 @@ import { CiPalette } from "react-icons/ci";
 import { BsEmojiLaughing } from "react-icons/bs";
 import { RiDeleteBin2Line, RiEditLine } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
 import { RiVipCrownFill } from "react-icons/ri";
+import { FaReact } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import { RiSettings3Line } from "react-icons/ri";
 import { MdExitToApp } from "react-icons/md";
 import { FcPicture } from "react-icons/fc";
 import { CgMathPlus } from "react-icons/cg";
 import { TbBrandSupabase } from "react-icons/tb";
-import { FaReact } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 import { BsArrowDown, BsArrowUpShort } from "react-icons/bs";
 import { FaBalanceScale } from "react-icons/fa";
 import logoLigth from "../assets/logoSinBg.png";
@@ -55,6 +57,7 @@ export const v = {
   colorPrincipal: `#00F34A`,
   boxshadowGray: `0px 10px 15px -3px rgba(0,0,0,0.1)`,
   iconoFlechabajo: IoIosArrowDown,
+  iconogit: FaGithub,
   iconocorona: RiVipCrownFill,
   iconoUser: BiUserCircle,
   iconoSettings: RiSettings3Line,
@@ -64,6 +67,7 @@ export const v = {
   rojo: `#F54E41`,
   agregar: CgMathPlus,
   iconosupabase: TbBrandSupabase,
+  iconowpp: IoLogoWhatsapp,
   iconoreact: FaReact,
   flechaabajolarga: BsArrowDown,
   flechaarribalarga: BsArrowUpShort,

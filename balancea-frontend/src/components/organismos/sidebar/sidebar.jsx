@@ -15,9 +15,8 @@ export function Sidebar({ state, setState }) {
       <Container $isopen={state.toString()} className={state ? "active" : ""}>
         <div className="Logocontent">
           <div className="imgcontent">
-            <img src={v.logo} />
+          <img src={v.logo1} />
           </div>
-          <h2>Cerdyn</h2>
         </div>
         {LinksArray.map(({ icon, label, to }) => (
           <div
@@ -87,23 +86,20 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
     .imgcontent {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 30px;
+      width: ${({ isOpen }) => isOpen ==="true" ? `220px` : `45px` };
       cursor: pointer;
       transition: 0.3s ease;
-      transform: ${({ $isopen }) => ($isopen==="true" ? `scale(0.7)` : `scale(1.5)`)}
+      transform: ${({ isOpen }) => (isOpen ==="true" ? `scale(0.7)` : `scale(1.5)`)}
         rotate(${({ theme }) => theme.logorotate});
       img {
         width: 100%;
         animation: flotar 1.7s ease-in-out infinite alternate;
       }
-    }
-    h2 {
-      display: ${({ $isopen }) => ($isopen==="true" ? `block` : `none`)};
     }
     @keyframes flotar {
       0% {

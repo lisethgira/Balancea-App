@@ -1,42 +1,48 @@
 import styled from "styled-components";
-import { Carousel, Btnsave, v } from "../../index";
+import { Carousel, Btnsave, v, UserAuth } from "../../index";
 
 export function HomeTemplate() {
+  const { user } = UserAuth();
+
   return (
     <Main>
       <Container>
         <Box>
           <Carousel />
         </Box>
-        <Title>
-          Bienvenido a Cerdyn <br /> 🐷
-        </Title>
+        <Title>Hola, {user.name}</Title>
+        <SubTitle>
+          ¡Bienvenid@! a Balancea <br /> ⚖️💰
+        </SubTitle>
         <SubText>
-          Cerdyn nace por las pocas aplicaciones gratis que existen para
+          Balancea nace por las pocas aplicaciones gratis que existen para
           controlar gastos e ingresos.
           <br />
-          ❤️Está surgiendo como curso para lograr presupuestarlo,
+          ❤️Prontamente pondremos anuncios así podremos mantenernos en el
+          tiempo,
           <br /> MUCHAS GRACIAS POR APOYAR ESTE PROYECTO
         </SubText>
         <ContainerAutor>
           <div className="contentImg">
-            <img src="https://i.ibb.co/6Nw0B9p/yjtityutyu.png" />
+            <img src="https://raw.githubusercontent.com/lisethgira/Balancea-App/main/balancea-frontend/src/assets/profile.png" />
           </div>
           <div className="contentDescripcion">
-            <b>Ing. Franklin Bustamante</b>
-            <span>"cualquiera puede programar"</span>
+            <b>Liseth Arelis Giraldo Morales</b>
+            <span>Tecnología en Análisis y Desarrollo de Software</span>
           </div>
         </ContainerAutor>
         <ButtonContainer>
-          <Btnsave url="https://t.me/htmlycss369"
-            titulo="UNIRSE A Telegram"
-            bgcolor="#BF94FF"
-            icono={<v.iconoreact />}
+          <Btnsave
+            url="https://api.whatsapp.com/send?phone=+573196178645&text=Tengo+Dudas+sobre+mi+aplicaci%C3%B3n"
+            titulo="Escribe a Whatsapp"
+            bgcolor="#1B9E67"
+            icono={<v.iconowpp />}
           />
-          <Btnsave url="https://www.udemy.com/course/sistema-para-el-control-de-gastos-con-reactjs-y-postgresql/?couponCode=CERDYNREACT"
-            titulo="Ver curso"
+          <Btnsave
+            url="https://github.com/lisethgira?tab=repositories"
+            titulo="Repositorio Github"
             bgcolor="#fb37b7"
-            icono={<v.iconocorona />}
+            icono={<v.iconogit />}
           />
         </ButtonContainer>
       </Container>
@@ -52,7 +58,6 @@ const Main = styled.main`
   align-items: center;
   position: relative;
   overflow: hidden;
-  
 `;
 const Container = styled.div`
   width: 75%;
@@ -61,8 +66,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align:center;
-  
+  text-align: center;
 `;
 const Box = styled.div`
   width: 50%;
@@ -78,6 +82,26 @@ const Box = styled.div`
   }
 `;
 const Title = styled.h2`
+  font-size: ${(props) => props.theme.fontxxl};
+  text-transform: capitalize;
+  color: ${(props) => props.theme.text};
+  align-self: flex-start;
+  width: 80%;
+  margin: 0 auto;
+
+  @media (max-width: 64em) {
+    width: 100%;
+    text-align: center;
+  }
+  @media (max-width: 40em) {
+    font-size: ${(props) => props.theme.fontxl};
+  }
+  @media (max-width: 30em) {
+    font-size: ${(props) => props.theme.fontlg};
+  }
+`;
+
+const SubTitle = styled.h3`
   font-size: ${(props) => props.theme.fontxxl};
   text-transform: capitalize;
   color: ${(props) => props.theme.text};
@@ -133,7 +157,7 @@ const ContainerAutor = styled.div`
   .contentDescripcion {
     display: flex;
     flex-direction: column;
-    b{
+    b {
       color: ${(props) => props.theme.text};
     }
     span {
@@ -145,7 +169,7 @@ const ButtonContainer = styled.div`
   width: 80%;
   margin: 1rem auto;
   align-self: center;
-  justify-content:center;
+  justify-content: center;
   display: flex;
   gap: 20px;
   @media (max-width: 64em) {
