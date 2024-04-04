@@ -89,9 +89,9 @@ const Header = () => {
             </Logo>
             <Ul className={open ? `active` : `navlinks`}>
               <Li>
-                <Link to={`#`}>Home</Link>
+                <Link to={`/`}>Home</Link>
               </Li>
-              <Li>
+              {/* <Li>
                 <Link to={`#`}>About</Link>
               </Li>
               <Li>
@@ -102,9 +102,9 @@ const Header = () => {
               </Li>
               <Li>
                 <Link to={`#`}>Career</Link>
-              </Li>
+              </Li> */}
             </Ul>
-            <Link to="https://balancea-app-4j4a.vercel.app/">
+            <Link to="http://localhost:5173/">
               <Button>Iniciar Sesión</Button>
             </Link>
             <img

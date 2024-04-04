@@ -91,13 +91,13 @@ const Hero = () => {
         <HeroWrapper>
           <HeroContent>
             <HeroContentWrapper>
-              <H1> Next generation digital banking</H1>
+              <H1> Control de Gastos en la Era Digital </H1>
               <Para>
-                Take your financial life online. Your Easybank account will be a
-                one-stop-shop for spending, saving, budgeting, investing, and
-                much more.
+                Lleva tu vida financiera al mundo digital. Tu cuenta en Balancea
+                será el centro de todo para controlar tus gastos, ahorrar,
+                presupuestar, invertir y mucho más.
               </Para>
-              <Link to="https://balancea-app-4j4a.vercel.app/">
+              <Link to="http://localhost:5173/">
                 <Button>Iniciar Sesión</Button>
               </Link>
             </HeroContentWrapper>
