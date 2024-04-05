@@ -4,6 +4,7 @@ import { supabase, InsertarUsuarios } from "../index";
 const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState([]);
+
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
@@ -26,6 +27,7 @@ export const AuthContextProvider = ({ children }) => {
       authListener.subscription;
     };
   }, []);
+
   const insertarUsuarios = async (dataProvider, idAuthSupabase) => {
     const p = {
       strUserNames: dataProvider.name,
@@ -36,10 +38,20 @@ export const AuthContextProvider = ({ children }) => {
     };
     await InsertarUsuarios(p);
   };
+
+  const handlerChangeData = (value) => {
+    setUser(value);
+  };
+
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{
+      user,
+      handlerChangeData
+    }}>{children}</AuthContext.Provider>
   );
 };
 export const UserAuth = () => {
   return useContext(AuthContext);
 };
+
+

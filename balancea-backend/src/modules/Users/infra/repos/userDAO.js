@@ -11,19 +11,17 @@ class userDAO {
             await client.connect()
 
             const query = `INSERT INTO public."tbl_Users"(
-                "strUser",
+                "strUserNames",
                 "strPass",
-                "strName",
-                "strLastName",
-                "strEmail"
-                ) VALUES ($1, $2, $3, $4, $5) RETURNING *`
+                "strEmail",
+                "idAuth_supabase"
+                ) VALUES ($1, $2, $3, $4) RETURNING *`
 
             const values = [
                 data.strUser,
                 data.strPass,
-                data.strName,
-                data.strLastName,
                 data.strEmail,
+                data.idSupabase,
             ]
 
             const response = await client.query(query, values)
@@ -57,7 +55,7 @@ class userDAO {
             const query = `
                 SELECT *
                 FROM public."tbl_Users"
-                WHERE ("strUser" = $1)
+                WHERE ("strUserNames" = $1)
             `
 
             const values = [data.strUser]
@@ -93,11 +91,10 @@ class userDAO {
             const query = `
                 SELECT *
                 FROM public."tbl_Users"
-                WHERE ("strUser" = $1 OR "strEmail" = $2)
+                WHERE ("strEmail" = $1)
             `
 
             const values = [
-                data.strUser,
                 data.strEmail
             ]
 

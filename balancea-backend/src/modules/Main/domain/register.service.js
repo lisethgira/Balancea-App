@@ -1,15 +1,15 @@
 //Lbreria
 const validator = require("validator").default;
 
+//CLient
+const supabase = require("../../../common/client/supabaseClient")
+
 //Interface
 const classInterfaceDAOMain = require("../infra/connectors/mainConnectors")
 
 //services
 const serviceSetUser = require("../../Users/domain/setUser.service")
 const serviceGetUser = require("../../Users/domain/getUser.service")
-
-//Functions
-const { encrypt } = require("../app/functions/handleBcrypt")
 
 class Register {
     //Objetc
@@ -24,6 +24,7 @@ class Register {
 
     async main() {
         await this.#validations()
+        await this.#registerSupabase()
         await this.#register()
 
         return this.#objResult
@@ -39,18 +40,6 @@ class Register {
             throw new Error("El campo de Usuario contiene un formato no valido debe ser tipo email.");
         }
 
-        const queryGetUser = await serviceGetUser({
-            strUser: this.#objData.strUser
-        });
-
-        if (queryGetUser.error) {
-            throw new Error(queryGetUser.msg)
-        }
-
-        if (queryGetUser.data) {
-            throw new Error("El usuario ingresado ya existe en nuestra base de datos.");
-        }   
-
         const queryGetUserByEmail = await serviceGetUser({
             strEmail: this.#objData?.strEmail
         });
@@ -61,6 +50,21 @@ class Register {
 
         if (queryGetUserByEmail.data) {
             throw new Error("El correo ingresado ya existe en nuestra base de datos.");
+        }
+    }
+
+    async #registerSupabase(){
+        const { user, signUpError } = await supabase.auth.signUp({ email: this.#objData?.strEmail, password: this.#objData?.strPass });
+
+        console.log(await supabase.auth.signUp({ email: this.#objData?.strEmail, password: this.#objData?.strPass }))
+
+        if(signUpError){
+            throw new Error("Ocurrio un error con sing up de supabase")
+        }
+
+        this.#objData = {
+            ...this.#objData,
+            idSupabase: user?.id
         }
     }
 

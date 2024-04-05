@@ -30,11 +30,11 @@ class Login {
 
     //Validaciones del microservicio
     async #validations(){
-        if (!this.#objData?.strUser && !this.#objData?.strPass){
+        if (!this.#objData?.strEmail && !this.#objData?.strPass){
             throw new Error("Faltan campos requeridos.");
         }
 
-        const queryGetUser = await serviceGetUser({strUser:this.#objData.strUser});
+        const queryGetUser = await serviceGetUser({strEmail:this.#objData.strEmail});
 
         if (queryGetUser.error) {
             throw new Error(queryGetUser.msg)
@@ -54,19 +54,22 @@ class Login {
             throw new Error("Contraseña incorrecta")
         }
 
-        const secretKey = process.env.KEY_TOKEN
+        // const secretKey = process.env.KEY_TOKEN
 
-        const token = jwt.sign({
-            ...this.#objDataUser,
-            strPass:null,
-        },
-        secretKey,
-        {expiresIn:process.env.TOKEN_EXPIRATION,algorithm: "HS256"})
+        // const token = jwt.sign({
+        //     ...this.#objDataUser,
+        //     strPass:null,
+        // },
+        // secretKey,
+        // {expiresIn:process.env.TOKEN_EXPIRATION,algorithm: "HS256"})
         
         this.#objResult={
             error: false,
             msg: "El usuario se logueo correctamente.",
-            data: token,
+            data: {
+                ...this.#objDataUser,
+                strPass:null,
+            },
         }
 
     }
