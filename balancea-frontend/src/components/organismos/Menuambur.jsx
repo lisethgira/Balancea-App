@@ -10,7 +10,7 @@ export function Menuambur() {
       <NavBar>
         <HamburgerMenu $click={click.toString()} onClick={() => setClick(!click)}>
           <div className="contentLogo active">
-            <img src={v.logo} />
+            <img src={v.logo1} />
           </div>
         </HamburgerMenu>
         <Menu $click={click.toString()}>
@@ -76,10 +76,11 @@ const HamburgerMenu = styled.span`
     display: flex;
   }
   .contentLogo {
-    margin-left: 12px;
+    margin-left: 10px;
+    margin-right: 20px;
     width: 100%;
     img {
-      width: 100%;
+      width: 50px;
     }
   }
 `;

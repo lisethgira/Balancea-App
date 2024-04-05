@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {
-  v,
   InputBuscadorLista,
   ConvertirCapitalize,
   Device,
@@ -10,6 +9,7 @@ import iso from "iso-country-currency";
 import { useState } from "react";
 export function ListaPaises({ setSelect, setState }) {
   const isocodigos = iso.getAllISOCodes();
+  // console.log(isocodigos);
   const [dataresult, setDataresult] = useState([]);
   function seleccionar(p) {
     setSelect(p);

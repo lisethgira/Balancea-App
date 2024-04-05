@@ -30,7 +30,9 @@ export const AuthContextProvider = ({ children }) => {
     const p = {
       strUserNames: dataProvider.name,
       strPicture: dataProvider.picture,
+      strEmail:dataProvider.email,
       idAuth_supabase: idAuthSupabase,
+      
     };
     await InsertarUsuarios(p);
   };

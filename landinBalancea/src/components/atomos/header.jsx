@@ -1,10 +1,10 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import logo from "../../assets/logoSinBg.png";
 import { Link } from "react-router-dom";
 import { Button, Container } from "../../styles/common";
-import hamburger from "../../assets/Landing/icon-hamburger.svg";
-import close from "../../assets/Landing/icon-close.svg";
+// import hamburger from "../../assets/Landing/icon-hamburger.svg";
+// import close from "../../assets/Landing/icon-close.svg";
 
 import styled from "styled-components";
 
@@ -28,9 +28,9 @@ export const Nav = styled.nav`
   }
 
   @media (max-width: 600px) {
-    button {
+    /* button {
       display: none;
-    }
+    } */
     .hamburger {
       display: block;
     }
@@ -74,11 +74,11 @@ const Logo = styled.div`
 `;
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  // const handleClick = () => {
+  //   setOpen(!open);
+  // };
   return (
     <div>
       <Container>
@@ -87,10 +87,10 @@ const Header = () => {
             <Logo>
               <img src={logo} alt="logo" />
             </Logo>
-            <Ul className={open ? `active` : `navlinks`}>
-              <Li>
+            {/* <Ul className={open ? `active` : `navlinks`}> */}
+              {/* <Li>
                 <Link to={`/`}>Home</Link>
-              </Li>
+              </Li> */}
               {/* <Li>
                 <Link to={`#`}>About</Link>
               </Li>
@@ -103,16 +103,16 @@ const Header = () => {
               <Li>
                 <Link to={`#`}>Career</Link>
               </Li> */}
-            </Ul>
+            {/* </Ul> */}
             <Link to="http://localhost:5173/">
               <Button>Iniciar Sesión</Button>
             </Link>
-            <img
+            {/* <img
               src={open ? close : hamburger}
               className="hamburger"
               alt=""
               onClick={handleClick}
-            />
+            /> */}
           </Nav>
         </Navigation>
       </Container>

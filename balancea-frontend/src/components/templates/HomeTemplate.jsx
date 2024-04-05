@@ -1,12 +1,18 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { Carousel, Btnsave, v, UserAuth } from "../../index";
+import { Carousel, Btnsave, v, UserAuth, Header } from "../../index";
 
 export function HomeTemplate() {
   const { user } = UserAuth();
-
+  const [state, setState] = useState(false);
   return (
     <Main>
       <Container>
+        <header className="header">
+          <Header
+            stateConfig={{ state: state, setState: () => setState(!state) }}
+          />
+        </header>
         <Box>
           <Carousel />
         </Box>
@@ -58,6 +64,15 @@ const Main = styled.main`
   align-items: center;
   position: relative;
   overflow: hidden;
+  .header {
+    /* background-color: rgba(103, 93, 241, 0.14); */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Alinea al principio verticalmente */
+    right: 0;
+    @media (max-width: 768px) { 
+    display: none;
+  }
+  }
 `;
 const Container = styled.div`
   width: 75%;
@@ -66,7 +81,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
+  text-align: center; 
+  color: ${({ theme }) => theme.text};
 `;
 const Box = styled.div`
   width: 50%;

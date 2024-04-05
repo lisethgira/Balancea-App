@@ -59,7 +59,7 @@ export function CategoriasTemplate({ data }) {
       <header className="header">
         <Header stateConfig={{ state: state, setState: openUser }} />
       </header>
-
+      
       <section className="tipo">
         <ContentFiltros>
           <div

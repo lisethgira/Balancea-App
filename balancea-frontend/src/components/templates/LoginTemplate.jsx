@@ -125,7 +125,7 @@ const ContainerForm = styled.div`
             <img src={Logo} alt="Descripción" />
           </ImageContainer>
           <p className="frase">Toma el control de tus 💵gastos e 💰ingresos.</p>
-          <Link to="/" className="backLink">
+          <Link to="http://localhost:5174/" className="backLink">
             Regresar al Inicio
           </Link>
         </Column>

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
+
 import {
   UserAuth,
   BtnCircular,
@@ -10,11 +12,14 @@ import {
 export function DataUser({ stateConfig }) {
   const { user } = UserAuth();
   const { signout } = useAuthStore();
+  const navigate = useNavigate();
+
   const funcionXtipo = async (p) => {
    
     if (p.tipo === "cerrarsesion") {
-     
       await signout();
+    } else if (p.tipo === "configuracion" || p.tipo === "miperfil") {
+      navigate('/configurar'); 
     }
   };
   return (
